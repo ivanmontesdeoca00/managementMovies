@@ -1,0 +1,3 @@
+db.url=jdbc:mysql://localhost:3306/cinePelicula?allowPublicKeyRetrieval=true&useSSL=false
+db.user=TU_USUARIO
+db.password=TU_CONTRASENA
