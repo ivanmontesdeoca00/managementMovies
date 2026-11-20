@@ -38,16 +38,14 @@ public class PruebasIntegracionPelicula {
 
     @Test
     public void pruebaFlujoCompletoCRUD() throws SQLException {
-        // 1. Crear (INSERT)
+        
         Pelicula nueva = new Pelicula(ID_PRUEBA, "Matrix", "Ciencia Ficción", 5500.00, "1999-03-31", true);
         assertTrue("Debe insertar la película", controlador.agregarRegistro(nueva));
 
-        // 2. Leer (SELECT)
         Pelicula encontrada = controlador.buscarPelicula(ID_PRUEBA);
         assertNotNull("Debe encontrar la película insertada", encontrada);
         assertEquals("Matrix", encontrada.getNombre());
 
-        // 3. Actualizar (UPDATE)
         encontrada.setPrecioEntrada(6200.00);
         encontrada.setEnCartelera(false);
         assertTrue("Debe modificar la película", controlador.modificarRegistro(encontrada));
@@ -56,7 +54,6 @@ public class PruebasIntegracionPelicula {
         assertEquals(6200.00, modificada.getPrecioEntrada(), 0.01);
         assertFalse(modificada.isEnCartelera());
 
-        // 4. Eliminar (DELETE)
         assertTrue("Debe eliminar la película", controlador.eliminarRegistro(ID_PRUEBA));
         assertNull("Ya no debe existir en la BD", controlador.buscarPelicula(ID_PRUEBA));
     }
